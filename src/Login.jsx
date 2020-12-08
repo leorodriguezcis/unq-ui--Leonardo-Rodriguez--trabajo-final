@@ -68,35 +68,6 @@ return (
   </div>
 </div>
 )
-/*return (
-  <div>
-      
-        <label>
-          NameTag
-          <input
-            value={jugador1}
-            onChange={handleInputChange}
-            className="form-control"
-          ></input>
-        </label>
-        <p>Elegir Oponente</p>
-        <button onClick={()=>habilitarJugador()}>vsPlayer</button>
-        <button onClick={()=>jugarCpu()}>vsCpu</button>
-        {habilitado?
-        (<label>
-        NameTagPlayer2
-          <input
-          value={jugador2}
-          onChange={handleInputChange2}
-          className="form-control"
-        ></input>
-        <button onClick={()=>jugarPlayer()}>
-          Jugar
-        </button>
-      </label>
-      ):<div></div>}
-    </div>
-    
-)*/
+
         }
 export default Login;

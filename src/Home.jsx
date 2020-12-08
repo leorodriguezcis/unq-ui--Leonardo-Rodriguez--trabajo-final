@@ -15,6 +15,7 @@ const Home = () =>{
   const history = useHistory();
   const [puntajeJ1, setPuntajeJ1] = useState(0)
   const [puntajeJ2, setPuntajeJ2] = useState(0)
+  const [ayuda , setAyuda] = useState(false)
 
 
 
@@ -252,8 +253,13 @@ const Home = () =>{
         <h2 class="active">jugador 2 eligio:<img id="link"  src={localStorage.getItem("imagenCpu")} alt="" height="50"/></h2>
         <h2 class="active">ganador:{localStorage.getItem("ganador")}</h2>
       </div>:<div/>}
+      
+          
       </div>
-
+      <div>
+      <input type="button"onClick={ayudaAc}  class="fadeInDown" value="Ayuda"/>
+      {ayuda?<h2 class="active">{<Ayuda/>}</h2>:<div/>}
+      </div>
     </div>
   )
 
@@ -277,7 +283,13 @@ const Home = () =>{
           <h2 class="active">jugador 2 eligio:<img id="link"  src={localStorage.getItem("imagenJ2")} alt="" height="50"/></h2>
           <h2 class="active">ganador:{localStorage.getItem("ganador")}</h2>:<div></div>
          </div> : <div/>}
+         <input type="button"onClick={ayudaAc}  class="fadeInDown" value="Ayuda"/>
+          
           </div>
+          
+          <input type="button"onClick={ayudaAc}  class="fadeInDown" value="Ayuda"/>
+          {ayuda?<h2 class="active">{<Ayuda/>}</h2>:<div/>}
+          
       </div>
     )
 
@@ -300,7 +312,22 @@ const Home = () =>{
       return <VsJugador/>
     }
   }
-
+  const ayudaAc =()=>{ 
+    setAyuda(!ayuda)
+  }
+  const Ayuda = ()=> {
+    return(<p>Las tijeras cortan el papel.
+      El papel cubre la piedra.
+      La piedra aplasta el lagarto.
+      El lagarto envenena a Spock.
+      Spock aplasta las tijeras.
+      Las tijeras decapitan el lagarto.
+      El lagarto se come el papel.
+      El papel refuta a Spock.
+      Spock vaporiza la piedra.
+      La piedra aplasta a las tijeras.</p>
+    )
+  }
   return(
       <div align="center">
         <input type="button"onClick={salir}  class="fadeInDown" value="volver a Piedra, Papel, Tijera, Lagarto o Spock"/>
