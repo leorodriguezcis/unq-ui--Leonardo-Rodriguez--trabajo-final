@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from "react";
 import "./LinkSelectorText.css"
 import { useHistory } from "react-router-dom";
+import "./login.css"
 
 const Home = () =>{
-  const [jugadorCarta, setCartaj] = useState({})
+  const [renderCpu,setRenderCpu] = useState("")
   const [jugador1, setJugador1] = useState("")
   const [user1Selec, setUser1Select] = useState(null)
   const [user2Selec, setUser2Select] = useState(null)
   const [cpu, setCpu] = useState("")
   const [turno, setTurno] = useState("jugador 1")
-  const [turnoCpu, setTurnoCpu] = useState("jugador 1")
   const [jugador2, setJugador2] = useState("")
   const [ganador, setGanador] = useState("")
   const history = useHistory();
   const [puntajeJ1, setPuntajeJ1] = useState(0)
   const [puntajeJ2, setPuntajeJ2] = useState(0)
-  const [renderCpu, setRenderCpu] = useState(0)
+
 
 
   useEffect(()=> {
       setJugador1((localStorage.getItem("jugador1")))
       setPuntajeJ1(localStorage.getItem("puntajeJ1"))
       setPuntajeJ2(localStorage.getItem("puntajeJ2"))
-      setCpu(JSON.stringify(localStorage.getItem("cpu")))
+      setCpu(localStorage.getItem("cpu"))
       setRenderCpu(localStorage.getItem("renderCpu"))
       setJugador2((localStorage.getItem("jugador2")))
   }
@@ -32,12 +32,12 @@ const Home = () =>{
 
   const Roca = ()=>{
     const name = "rock"
-    const img = "https://i.ibb.co/2sPFxR5/Rock.png"
+    const img = "https://i.ibb.co/1GxJ4n5/piedra-256x256.png"
     
     const action =()=>{
       return  {name:"rock",
       leGanaA:["lizzard","scissor"],
-      render:"https://i.ibb.co/2sPFxR5/Rock.png"}
+      render:"https://i.ibb.co/1GxJ4n5/piedra-256x256.png"}
     }
     const setEleccionAJugador = (elem) =>{
       (turno == "jugador 1")? setUser1Select(elem):setUser2Select(elem)
@@ -52,7 +52,7 @@ const Home = () =>{
   } 
   const Papel = ()=>{
     const name = "papper"
-    const img = "https://i.ibb.co/GsJCY3w/Papper.png"
+    const img = "https://i.ibb.co/s9t34Ym/papel-256x256.png"
     
     const setEleccionAJugador = (elem) =>{
       (turno == "jugador 1")? setUser1Select(elem):setUser2Select(elem)
@@ -62,7 +62,7 @@ const Home = () =>{
     const action =()=>{
     return {name:"papper",
     leGanaA:["spock","rock"],
-    render:"https://i.ibb.co/GsJCY3w/Papper.png"}
+    render:"https://i.ibb.co/s9t34Ym/papel-256x256.png"}
     }
     return(
       
@@ -72,7 +72,7 @@ const Home = () =>{
   } 
   const Tijera = ()=>{
     const name = "scissor"
-    const img = "https://i.ibb.co/fvfv4Zn/Sissors.png"
+    const img = "https://i.ibb.co/3zH5RPH/tijera-256x256.png"
     
     const setEleccionAJugador = (elem) =>{
       (turno == "jugador 1")? setUser1Select(elem):setUser2Select(elem)
@@ -82,7 +82,7 @@ const Home = () =>{
     const action =()=>{
      return{name:"scissor",
      leGanaA:["papper","lizzard"],
-     render:"https://i.ibb.co/fvfv4Zn/Sissors.png"}
+     render:"https://i.ibb.co/3zH5RPH/tijera-256x256.png"}
     }
     
     return(
@@ -93,7 +93,7 @@ const Home = () =>{
   }
   const Lagarto = ()=>{
     const name = "lizzard"
-    const img = "https://i.ibb.co/44JpdYy/Lizzard.png"
+    const img = "https://i.ibb.co/Bg62f11/lagarto-256x256.png"
     
     const setEleccionAJugador = (elem) =>{
       (turno == "jugador 1")? setUser1Select(elem):setUser2Select(elem)
@@ -103,7 +103,7 @@ const Home = () =>{
     const action =()=>{
       return{name:"lizzard",
       leGanaA:["spock","papper"],
-      render:"https://i.ibb.co/44JpdYy/Lizzard.png"}
+      render:"https://i.ibb.co/Bg62f11/lagarto-256x256.png"}
     }
     return(
       
@@ -113,7 +113,7 @@ const Home = () =>{
   }
   const Spock = ()=>{
     const name = "spock"
-    const img = "https://i.ibb.co/qNsHqn0/Spock.png"
+    const img = "https://i.ibb.co/Twkk5zG/spock-256x256.png"
     
     const setEleccionAJugador = (elem) =>{
       (turno == "jugador 1")? setUser1Select(elem):setUser2Select(elem)
@@ -122,7 +122,7 @@ const Home = () =>{
     const action =()=>{
      return{name:"spock",
      leGanaA:["spock","rock"],
-     render:"https://i.ibb.co/qNsHqn0/Spock.png"}
+     render:"https://i.ibb.co/Twkk5zG/spock-256x256.png"}
     }
     return(
       
@@ -134,19 +134,19 @@ const Home = () =>{
   const BatallaVsCpu = (user1Selec) =>{
   const itemsCpu = [ {name:"spock",
                       leGanaA:["spock","rock"],
-                      render:"https://i.ibb.co/qNsHqn0/Spock.png"},
+                      render:"https://i.ibb.co/Twkk5zG/spock-256x256.png"},
                      {name:"lizzard",
                       leGanaA:["spock","papper"],
-                      render:"https://i.ibb.co/44JpdYy/Lizzard.png"},
+                      render:"https://i.ibb.co/Bg62f11/lagarto-256x256.png"},
                      {name:"scissor",
                       leGanaA:["papper","lizzard"],
-                      render:"https://i.ibb.co/fvfv4Zn/Sissors.png"},
+                      render:"https://i.ibb.co/3zH5RPH/tijera-256x256.png"},
                      {name:"papper",
                      leGanaA:["spock","rock"],
-                     render:"https://i.ibb.co/GsJCY3w/Papper.png"},
+                     render:"https://i.ibb.co/s9t34Ym/papel-256x256.png"},
                      {name:"rock",
                      leGanaA:["lizzard","scissor"],
-                     render:"https://i.ibb.co/2sPFxR5/Rock.png"} ] 
+                     render:"https://i.ibb.co/1GxJ4n5/piedra-256x256.png"} ] 
 
       let numRandom = Math.floor(Math.random() * itemsCpu.length)
       let res2 = itemsCpu[numRandom]
@@ -236,11 +236,10 @@ const Home = () =>{
       <Papel/><Tijera/><Spock/><Lagarto/><Roca/>
       <p>{turno}</p>
       {(user1Selec)? <button onClick={()=>setGanador(BatallaVsCpu(user1Selec))}>Batalla</button> : <div/>}
-    <p>Cpu Eligio</p>
-    <img id="link"  src={localStorage.getItem("imagenCpu")} alt="" height="50"/>
+
     
     <p>jugador 1 eligio:<img id="link"  src={localStorage.getItem("imagenJ1")} alt="" height="50"/></p>
-    <p>jugador 2 eligio:<img id="link"  src={localStorage.getItem("imagenJ2")} alt="" height="50"/></p>
+    <p>jugador 2 eligio:<img id="link"  src={localStorage.getItem("imagenCpu")} alt="" height="50"/></p>
       <p>ganador:{localStorage.getItem("ganador")}</p>
     </div>
   )
@@ -282,13 +281,15 @@ const Home = () =>{
   return(
       <div>
         <button onClick={salir}>Volver al Menu Principal</button>
-        <p/>Jugador 1 :{JSON.stringify(localStorage.getItem("jugador1"))}
-          <p/>Puntaje J1:{puntajeJ1}
-          <p/>jugador 2 :{localStorage.getItem("cpu")?(
-            JSON.stringify(localStorage.getItem("cpu"))):
-            JSON.stringify(localStorage.getItem("jugador2")) 
-        }<p/>Puntaje J2:{puntajeJ2}
-          {elegir()}
+          <div>
+            <h2 class="active">Jugador 1 :{(localStorage.getItem("jugador1"))} ---------- Puntaje:{puntajeJ1}</h2>
+            <br/>
+            <h2 class="active">Jugador 2 :{localStorage.getItem("cpu")?(
+              (localStorage.getItem("cpu"))):
+              (localStorage.getItem("jugador2")) 
+            } ---------- Puntaje J2:{puntajeJ2}</h2>
+            {elegir()}
+          </div>
       </div>
   )    
 }

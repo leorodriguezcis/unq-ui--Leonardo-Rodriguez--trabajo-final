@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-
+import "./login.css"
 
 
 
@@ -45,8 +45,30 @@ const handleInputChange2 = (event) => {
 const habilitarJugador = () => {
   setHabilitarJ2(true)
 }
-
 return (
+  <div class="wrapper fadeInDown">
+  <div id="formContent">
+  <h2 class="active"> Piedra, Papel, Tijera, Lagarto o Spock </h2>
+    
+    <form>
+      <input  required value={jugador1} onChange={handleInputChange} type="text" id="login" class="fadeIn second" name="login" placeholder="Nombre Jugador"/>
+      <input type="submit" onClick={()=>jugarCpu()} class="fadeIn fourth" value="Jugar vs CPU"/>
+      <input type="button" onClick={()=>habilitarJugador()} class="fadeIn fourth" value="Jugar vs Otro Jugador"/>
+      {habilitado?
+        (<input value={jugador2} onChange={handleInputChange2} type="text" id="login" class="fadeIn second" name="login" placeholder="Nombre Jugador 2"/>  
+      ):<div></div>}
+      {habilitado?(
+        <input type="button" onClick={()=>jugarPlayer()} class="fadeIn fourth" value="Jugar vs Otro Jugador"/>
+      ):<div></div>}
+    </form>
+
+    
+    
+
+  </div>
+</div>
+)
+/*return (
   <div>
       
         <label>
@@ -74,6 +96,7 @@ return (
       </label>
       ):<div></div>}
     </div>
-)
+    
+)*/
         }
 export default Login;
