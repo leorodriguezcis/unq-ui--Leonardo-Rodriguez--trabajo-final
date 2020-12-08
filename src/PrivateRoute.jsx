@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect, Route } from "react-router-dom";
 
 const PrivateRoute = ({ path, component }) => {
-  const isAuthenticated = !!localStorage.getItem("user");
+  const isAuthenticated = !!localStorage.getItem("jugador1");
 
   if (!isAuthenticated) return <Redirect to={"/login"} />;
 

@@ -15,16 +15,18 @@ const Login = () => {
 
   const jugarCpu= () =>{
 
-    localStorage.setItem("oponente","cpu")
-    localStorage.setItem("user",jugador1)
+    localStorage.setItem("cpu","cpu")
+    localStorage.setItem("jugador1",jugador1)
     history.push("./home")
   }
-  const jugarPlayer = (event) => {
+  const jugarPlayer = () => {
     
-    localStorage.setItem("user",jugador1);
-    localStorage.setItem("oponente",jugador2)
-    
+    localStorage.setItem("puntajeJ1",0)
+    localStorage.setItem("puntajeJ2",0)
+    localStorage.setItem("jugador1",jugador1);
+    localStorage.setItem("jugador2",jugador2)
     history.push("/home");
+    
       }
 
 
