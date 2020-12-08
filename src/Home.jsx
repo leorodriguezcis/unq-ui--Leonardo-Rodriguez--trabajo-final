@@ -232,54 +232,65 @@ const Home = () =>{
   const VsCPU = () => {
 
     return(
-      <div>
+      <div align="center">
+         <div id="formContent">
+        <h2 class="active">Por favor Seleccione</h2>
+        <br/>
       <Papel/><Tijera/><Spock/><Lagarto/><Roca/>
-      <p>{turno}</p>
-      {(user1Selec)? <button onClick={()=>setGanador(BatallaVsCpu(user1Selec))}>Batalla</button> : <div/>}
+      <br/>
+      <br/>
+      {(user1Selec)?<input type="button" onClick={()=>setGanador(BatallaVsCpu(user1Selec))} class="fadeInDown" value="Batalla"/>  : <div/>}
+      <br/>
+      <h2 class="active">jugador 1 eligio:<img id="link"  src={localStorage.getItem("imagenJ1")} alt="" height="50"/></h2>
+      <h2 class="active">jugador 2 eligio:<img id="link"  src={localStorage.getItem("imagenCpu")} alt="" height="50"/></h2>
+      <h2 class="active">ganador:{localStorage.getItem("ganador")}</h2>
+      </div>
 
-    
-    <p>jugador 1 eligio:<img id="link"  src={localStorage.getItem("imagenJ1")} alt="" height="50"/></p>
-    <p>jugador 2 eligio:<img id="link"  src={localStorage.getItem("imagenCpu")} alt="" height="50"/></p>
-      <p>ganador:{localStorage.getItem("ganador")}</p>
     </div>
   )
 
   }
   const VsJugador = () =>{
     return(
-        <div>
-        <Papel/><Tijera/><Spock/><Lagarto/><Roca/>
-        <p>{turno}</p>
-        {user1Selec?<button onClick={fijarSeleccion}>Elegir</button>:<div/>}
-        {(user1Selec&&user2Selec)? <button onClick={()=>setGanador(Batalla(user1Selec,user2Selec))}>Batalla</button> : <div/>}
-    <p>jugador 1 eligio:<img id="link"  src={localStorage.getItem("imagenJ1")} alt="" height="50"/></p>
-    <p>jugador 2 eligio:<img id="link"  src={localStorage.getItem("imagenJ2")} alt="" height="50"/></p>
-        <p>ganador:{localStorage.getItem("ganador")}</p>
-
+        <div align="center">
+          <div id="formContent">
+          <h2 class="active">Por favor Seleccione</h2>
+          <br/>
+         <Papel/><Tijera/><Spock/><Lagarto/><Roca/>
+         <br/>
+         <h2 class="active">Turno De:{turno}</h2>
+        {user1Selec&&(turno!="jugador 2")?<input type="button"onClick={fijarSeleccion} class="fadeInDown" value="Fijar Seleccion"/>:<div/>}
+        {(user1Selec&&user2Selec)?<input type="button"onClick={()=>setGanador(Batalla(user1Selec,user2Selec))} class="fadeInDown" value="Batalla"/>: <div/>}
+        <br/>
+        <h2 class="active">jugador 1 eligio:<img id="link"  src={localStorage.getItem("imagenJ1")} alt="" height="50"/></h2>
+        <h2 class="active">jugador 2 eligio:<img id="link"  src={localStorage.getItem("imagenJ2")} alt="" height="50"/></h2>
+        <h2 class="active">ganador:{localStorage.getItem("ganador")}</h2>
+        </div>
       </div>
     )
 
   }
+  
   const salir = ()=>{
     localStorage.clear()
     history.push("./login")
   }
+
   const elegir =() =>
   {
     if(localStorage.getItem("contra")==1){
       localStorage.removeItem("jugador2")
-      localStorage.setItem("jugador2","cpu")
-      
+      localStorage.setItem("jugador2","cpu")    
       return <VsCPU/>
     }
     else
     {
-      
       return <VsJugador/>
     }
   }
+
   return(
-      <div>
+      <div align="center">
         <button onClick={salir}>Volver al Menu Principal</button>
           <div>
             <h2 class="active">Jugador 1 :{(localStorage.getItem("jugador1"))} ---------- Puntaje:{puntajeJ1}</h2>
@@ -287,7 +298,7 @@ const Home = () =>{
             <h2 class="active">Jugador 2 :{localStorage.getItem("cpu")?(
               (localStorage.getItem("cpu"))):
               (localStorage.getItem("jugador2")) 
-            } ---------- Puntaje J2:{puntajeJ2}</h2>
+            } ---------- Puntaje:{puntajeJ2}</h2>
             {elegir()}
           </div>
       </div>
