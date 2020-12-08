@@ -246,9 +246,12 @@ const Home = () =>{
       <br/>
       {(user1Selec)?<input type="button" onClick={()=>setGanador(BatallaVsCpu(user1Selec))} class="fadeInDown" value="Batalla"/>  : <div/>}
       <br/>
-      <h2 class="active">jugador 1 eligio:<img id="link"  src={localStorage.getItem("imagenJ1")} alt="" height="50"/></h2>
-      <h2 class="active">jugador 2 eligio:<img id="link"  src={localStorage.getItem("imagenCpu")} alt="" height="50"/></h2>
-      <h2 class="active">ganador:{localStorage.getItem("ganador")}</h2>
+      {localStorage.getItem("ganador")?
+      <div>
+        <h2 class="active">jugador 1 eligio:<img id="link"  src={localStorage.getItem("imagenJ1")} alt="" height="50"/></h2>
+        <h2 class="active">jugador 2 eligio:<img id="link"  src={localStorage.getItem("imagenCpu")} alt="" height="50"/></h2>
+        <h2 class="active">ganador:{localStorage.getItem("ganador")}</h2>
+      </div>:<div/>}
       </div>
 
     </div>
@@ -264,13 +267,17 @@ const Home = () =>{
          <Papel/><Tijera/><Spock/><Lagarto/><Roca/>
          <br/>
          <h2 class="active">Turno De:{turno}</h2>
+         
         {user1Selec&&(turno!="jugador 2")?<input type="button"onClick={fijarSeleccion} class="fadeInDown" value="Fijar Seleccion"/>:<div/>}
         {(user1Selec&&user2Selec)?<input type="button"onClick={()=>setGanador(Batalla(user1Selec,user2Selec))} class="fadeInDown" value="Batalla"/>: <div/>}
         <br/>
-        <h2 class="active">jugador 1 eligio:<img id="link"  src={localStorage.getItem("imagenJ1")} alt="" height="50"/></h2>
-        <h2 class="active">jugador 2 eligio:<img id="link"  src={localStorage.getItem("imagenJ2")} alt="" height="50"/></h2>
-        <h2 class="active">ganador:{localStorage.getItem("ganador")}</h2>
-        </div>
+         {localStorage.getItem("ganador")?
+         <div>
+          <h2 class="active">jugador 1 eligio:<img id="link"  src={localStorage.getItem("imagenJ1")} alt="" height="50"/></h2>
+          <h2 class="active">jugador 2 eligio:<img id="link"  src={localStorage.getItem("imagenJ2")} alt="" height="50"/></h2>
+          <h2 class="active">ganador:{localStorage.getItem("ganador")}</h2>:<div></div>
+         </div> : <div/>}
+          </div>
       </div>
     )
 
@@ -296,8 +303,9 @@ const Home = () =>{
 
   return(
       <div align="center">
-        <button onClick={salir}>Volver al Menu Principal</button>
+        <input type="button"onClick={salir}  class="fadeInDown" value="volver a Piedra, Papel, Tijera, Lagarto o Spock"/>
           <div>
+          
             <h2 class="active">Jugador 1 :{(localStorage.getItem("jugador1"))} ---------- Puntaje:{puntajeJ1}</h2>
             <br/>
             <h2 class="active">Jugador 2 :{localStorage.getItem("cpu")?(
