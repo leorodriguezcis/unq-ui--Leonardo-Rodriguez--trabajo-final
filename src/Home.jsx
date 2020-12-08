@@ -162,6 +162,7 @@ const Home = () =>{
       localStorage.setItem("ganador","cpu")
       localStorage.setItem("renderCpu",res2.render)
       setPuntajeJ2(localStorage.getItem("puntajeJ2"))
+      // eslint-disable-next-line no-restricted-globals
       location.reload();
       
       return jugador2
@@ -173,6 +174,7 @@ const Home = () =>{
       localStorage.setItem("puntajeJ1",res)
       localStorage.removeItem("ganador")
       localStorage.setItem("ganador",jugador1)
+      // eslint-disable-next-line no-restricted-globals
       location.reload();
       
       return jugador1
@@ -181,6 +183,7 @@ const Home = () =>{
       
       localStorage.removeItem("ganador")
       localStorage.setItem("ganador","empate")
+      // eslint-disable-next-line no-restricted-globals
       location.reload();
       return "Empate"
     }  
@@ -199,6 +202,7 @@ const Home = () =>{
       localStorage.setItem("ganador",jugador2)
       setPuntajeJ2(localStorage.getItem("puntajeJ2"))
       localStorage.setItem("renderCpu",user2Selec.render)
+      // eslint-disable-next-line no-restricted-globals
       location.reload();
       
       return jugador2
@@ -210,7 +214,7 @@ const Home = () =>{
       localStorage.setItem("puntajeJ1",res)
       localStorage.removeItem("ganador")
       localStorage.setItem("ganador",jugador1)
-      
+      // eslint-disable-next-line no-restricted-globals
       location.reload();
       
       return jugador1
@@ -219,6 +223,7 @@ const Home = () =>{
       
       localStorage.removeItem("ganador")
       localStorage.setItem("ganador","empate")
+      // eslint-disable-next-line no-restricted-globals
       location.reload();
       return "Empate"
     }  
